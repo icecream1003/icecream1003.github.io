@@ -1,8 +1,14 @@
-.project{
-  height:180;
-  width:240;
+body{
+  width:550px;
 }
-#div_back{
+#project img{
+  width:150px;
+}
+.project-item {
+  width:160;
+  display:inline-block;
+}
+#project{
   border-style: solid;
   border-width: 5px;
   border-color: blue;
