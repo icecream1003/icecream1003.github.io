@@ -12,6 +12,7 @@ body{
   border-width: 5px;
   border-color: blue;
   background:rgb(0, 255, 133);
+  padding-left:25px;
 }
 .title{
   color:red;
