@@ -23,6 +23,6 @@ body {
 #topic{
   text-align: center;
 }
-#information_ul{
+#information_ul li{
   padding:10px;
 }
