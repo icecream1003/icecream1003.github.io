@@ -83,9 +83,9 @@
               <div id="project">
                 <h2 class="title">專案</h2>
                 <div class="project-item">
-                  <a href="https://scratch.mit.edu/projects/55172680/">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#game">
                     <img class="project" src="https://cdn2.scratch.mit.edu/get_image/project/55172680_100x80.png?v=1441631358.82">
-                  </a>
+                  </button>
                   <p>專案1</p>
                   <p>By IcecreamIce<p>
                 </div>
@@ -113,14 +113,27 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">scratch game</h4>
-        </div>
-        <div class="modal-body">
-          <iframe allowtransparency="true" width="485" height="402" src="//scratch.mit.edu/projects/embed/64151796/?autostart=false" frameborder="0" allowfullscreen></iframe>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <h4 class="modal-title" id="myModalLabel">scratch game</h4>
+         </div>
+          <div class="modal-body">
+           <iframe allowtransparency="true" width="485" height="402" src="//scratch.mit.edu/projects/embed/64151796/?autostart=false" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="modal fade" id="game" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <h4 class="modal-title" id="myModalLabel">scratch game</h4>
+         </div>
+          <div class="modal-body">
+            <iframe allowtransparency="true" width="485" height="402" src="//scratch.mit.edu/projects/embed/55172680/?autostart=false" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
