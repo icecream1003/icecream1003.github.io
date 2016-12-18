@@ -2,7 +2,19 @@
 </html>
 <head>
   <script src="js/fdb-all.min.js">
+    var fdb = new ForerunnerDB();
+    var db = fdb.db("db");
+    var studentCollection = db.collection("students")
+    function student(name, age, gender, id){
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+      this.id = id
+    }'
+    var student1 = new student("Fiona", 12, "girl", 1);
+    var student2 = new student("Jack", 13, "boy" , 2)
   </script>
 </head>
 <body>
+
 </body>
