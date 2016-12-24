@@ -6,17 +6,26 @@
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
+    var scoreCollection = db.collection("score")
     function student(name, age, gender, id){
       this.name = name;
       this.age = age;
       this.gender = gender;
       this.id = id;
     }
+    function score(name, english, chinese, math){
+      this.name = name;
+      this.english = english;
+      this.chinese = english;
+      this.math = math;
+    }
     var student1 = new student("Fiona", 12, "girl", 1);
     var student2 = new student("Jack", 13, "boy" , 2);
+    var student1_scores = new score(studentCollection.find()[0].name, 70, 80, 90)
     studentCollection.insert(student1);
     studentCollection.insert(student2);
     console.log(studentCollection.find()[0].name);
+    console.log(studentCollention.find()[0].english)
   </script>
 </head>
 <body>
