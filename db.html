@@ -21,10 +21,10 @@
     }
     var student1 = new student("Fiona", 12, "girl", 1);
     var student2 = new student("Jack", 13, "boy" , 2);
-    var student1_scores = new score("Fiona", 70, 80, 90)
+    var student1_score = new score("Fiona", 70, 80, 90)
     studentCollection.insert(student1);
     studentCollection.insert(student2);
-    studentCollection.insert(student1_scores);
+    scoreCollection.insert(student1_score);
     console.log(studentCollection.find()[0].name);
     console.log(scoreCollection.find()[0].english)
   </script>
