@@ -7,6 +7,8 @@
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
     var scoreCollection = db.collection("score")
+    studentCollection.load();
+    scoreCollection.load();
     function student(name, age, id){
       this.name = name;
       this.age = age;
