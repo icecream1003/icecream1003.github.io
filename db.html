@@ -7,8 +7,21 @@
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
     var scoreCollection = db.collection("score")
-    studentCollection.load();
-    scoreCollection.load();
+    function after_load(){
+      var count += 1
+      if(count == 2){
+        for(var i=0;i<studentCollection.find().length;i++){
+          console.log("name:" + studentCollection.find()[i].name);
+          console.log("age:" + studentCollection.find()[i].age);
+          console.log("English_score:" + scoreCollection.find()[i].english);
+          console.log("Chinese_score:" + scoreCollection.find()[i].chinese);
+          console.log("Math_score:" + scoreCollection.find()[i].math);
+        } 
+      }
+    }
+
+    studentCollection.load(after_load);
+    scoreCollection.load(after_load);
     function student(name, age, id){
       this.name = name;
       this.age = age;
@@ -17,25 +30,22 @@
     function score(id, english, chinese, math){
       this.id = id;
       this.english = english;
-      this.chinese = english;
+      this.chinese = chinese;
       this.math = math;
     }
-    var student1 = new student("Fiona", 12, 1);
-    var student2 = new student("Jack", 13, 2);
-    var student1_score = new score(1, 70, 80, 90);
-    var student2_score = new score(2, 80, 90, 70);
-    studentCollection.insert(student1);
-    studentCollection.insert(student2);
-    scoreCollection.insert(student1_score);
-    scoreCollection.insert(student2_score);
-    
-    for(var i=0;i<studentCollection.find().length;i++){
-      console.log("name:" + studentCollection.find()[i].name);
-      console.log("age:" + studentCollection.find()[i].age);
-      console.log("English_score:" + scoreCollection.find()[i].english);
-      console.log("Chinese_score:" + scoreCollection.find()[i].chinese);
-      console.log("Math_score:" + scoreCollection.find()[i].math);
-    }    
+    function student(){
+      var student1 = new student("Fiona", 12, 1);
+      var student2 = new student("Jack", 13, 2);
+      studentCollection.insert(student1);
+      studentCollection.insert(student2);
+      studentCollection.save();
+      
+      var student1_score = new score(1, 70, 80, 90);
+      var student2_score = new score(2, 80, 90, 70);
+      scoreCollection.insert(student1_score);
+      scoreCollection.insert(student2_score);
+      scoreCollection.save();
+    }  
   </script>
 </head>
 <body>
