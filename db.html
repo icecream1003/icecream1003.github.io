@@ -10,7 +10,7 @@
     var load_count = 0;
     function after_load(){
       var load_count = load_count + 1;
-      if(count == 2){
+      if(load_count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
           console.log("name:" + studentCollection.find()[i].name);
           console.log("age:" + studentCollection.find()[i].age);
