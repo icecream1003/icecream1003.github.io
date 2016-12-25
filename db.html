@@ -49,7 +49,11 @@
       scoreCollection.insert(student1_score);
       scoreCollection.insert(student2_score);
       scoreCollection.save();
-    }  
+    }
+    $("body").on("click", ".btn", function(){
+      var id = $(this).attr("data-id")/1;
+      alert(id);
+    })
   </script>
 </head>
 <body>
