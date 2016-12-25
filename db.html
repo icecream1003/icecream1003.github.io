@@ -2,6 +2,20 @@
 <head>
   <script src="js/fdb-all.min.js">
   </script>
+  <table>
+    <thead>
+      <tr>
+        <td>studentCollection.find()[i].id</td>
+        <td>studentCollection.find()[i].name</td>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>123</td>
+         <td>12</td>
+       </tr>
+       </tbody>
+     </table>
   <script>
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
@@ -17,20 +31,7 @@
           console.log("English_score:" + scoreCollection.find()[i].english);
           console.log("Chinese_score:" + scoreCollection.find()[i].chinese);
           console.log("Math_score:" + scoreCollection.find()[i].math);
-          <table>
-            <thead>
-              <tr>
-                <td>studentCollection.find()[i].id</td>
-                <td>studentCollection.find()[i].name</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>123</td>
-                <td>12</td>
-              </tr>
-            </tbody>
-          </table>
+
         }
       }
     }
