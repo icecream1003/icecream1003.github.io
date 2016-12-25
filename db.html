@@ -20,14 +20,15 @@
           console.log("Chinese_score:" + scoreCollection.find()[i].chinese);
           console.log("Math_score:" + scoreCollection.find()[i].math);
           $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default" data-id="'+i+'">Detail</a></td><tr>')
-          $("body").on("click", ".btn", function(){
-            console.log("hi");
-            var id = $(this).attr("data-id")/1;
-            var stu = studentCollection.find({id:id})[0];
-            alert(id);
-    })
         }
+        $("body").on("click", ".btn", function(){
+          console.log("hi");
+          var id = $(this).attr("data-id")/1;
+          var stu = studentCollection.find({id:id})[0];
+          alert(id);
+        })
       }
+      
     }
 
     studentCollection.load(after_load);
