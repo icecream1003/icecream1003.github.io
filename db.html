@@ -9,7 +9,7 @@
     var scoreCollection = db.collection("score")
     var load_count = 0;
     function after_load(){
-      var load_count += 1
+      var load_count += 1;
       if(count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
           console.log("name:" + studentCollection.find()[i].name);
