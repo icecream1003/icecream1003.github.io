@@ -7,9 +7,9 @@
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
     var scoreCollection = db.collection("score")
-    var count = 0;
+    var load_count = 0;
     function after_load(){
-      var count += 1
+      var load_count += 1
       if(count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
           console.log("name:" + studentCollection.find()[i].name);
