@@ -22,11 +22,10 @@
           $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default" data-id="'+i+'">Detail</a></td><tr>')
         }
         $("body").on("click", ".btn", function(){
-          var id = $(this).attr("data-id")/1;
-          var i = 0;
+          var score_id = $(this).attr("data-id")/1;
           var score_save = [];
           for(var i=0;i<scoreCollection.find().length;i++){
-            if(scoreCollection.find()[i].id = id){
+            if(scoreCollection.find()[i].id == score_id){
               score.push(scoreCollection.find()[i].english);
               score.push(scoreCollection.find()[i].chinese);
               score.push(scoreCollection.find()[i].math);
