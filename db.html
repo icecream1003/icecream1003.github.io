@@ -27,10 +27,9 @@
           var score_save = [];
           for(var i=0;i<scoreCollection.find().length;i++){
             if(scoreCollection.find()[i].id == score_id){
-              console.log("0.0");
-              score.push(scoreCollection.find()[i].english);
-              score.push(scoreCollection.find()[i].chinese);
-              score.push(scoreCollection.find()[i].math);
+              score_save.push(scoreCollection.find()[i].english);
+              score_save.push(scoreCollection.find()[i].chinese);
+              score_save.push(scoreCollection.find()[i].math);
             }
           }
           var score_total = score_save[0] + score_save[1] + score_save[2];
