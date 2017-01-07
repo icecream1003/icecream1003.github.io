@@ -24,7 +24,9 @@
         $("body").on("click", ".btn", function(){
           var id = $(this).attr("data-id")/1;
           var stu = studentCollection.find({id:id})[0];
-          alert(id);
+          $('#myModal').on('shown.bs.modal', function () {
+             $('#myInput').focus();
+          })
         })
       }
       
