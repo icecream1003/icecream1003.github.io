@@ -54,14 +54,14 @@
       this.math = math;
     }
     function save_student(){
-      var student1 = new student("Fiona", 12, 1);
-      var student2 = new student("Jack", 13, 2);
+      var student1 = new student("Fiona", 12, 0);
+      var student2 = new student("Jack", 13, 1);
       studentCollection.insert(student1);
       studentCollection.insert(student2);
       studentCollection.save();
       
-      var student1_score = new score(1, 70, 80, 90);
-      var student2_score = new score(2, 80, 90, 70);
+      var student1_score = new score(0, 70, 80, 90);
+      var student2_score = new score(1, 80, 90, 70);
       scoreCollection.insert(student1_score);
       scoreCollection.insert(student2_score);
       scoreCollection.save();
