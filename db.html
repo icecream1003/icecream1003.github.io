@@ -24,7 +24,7 @@
         $("body").on("click", ".btn", function(){
           var id = $(this).attr("data-id")/1;
           var i = 0;
-          var score = [];
+          var score_save = [];
           for(var i=0;i<scoreCollection.length;i++){
             if(scoreCollection.find()[i].id = id){
               score.push(scoreCollection.find()[i].english);
@@ -32,7 +32,7 @@
               score.push(scoreCollection.find()[i].math);
             }
           }
-          var score_total = score[0] + score[1] + score[2];
+          var score_total = score_save[0] + score_save[1] + score_save[2];
           var score_average = score_total/3;
           alert("總分:" + score_total + "，平均:" + score_average);
         })
