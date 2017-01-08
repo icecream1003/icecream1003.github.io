@@ -34,23 +34,27 @@
           console.log($("#name").val());
           console.log($("#age").val());
           studentCollection.save();
+          $("#name").val("");
+          $("#age").val("");
         })
       }
-      
     }
 
     studentCollection.load(after_load);
     scoreCollection.load(after_load);
+    
     function student(name, age, id){
       this.name = name;
       this.age = age;
       this.id = id;
     }
+    
     function score(id, subject, score){
       this.id = id;
       this.subject = subject;
       this.score = score;
     }
+    
     function save_student(){
       studentCollection.insert(new student("Fiona", 12, 0));
       studentCollection.insert(new student("Jack", 13, 1));
