@@ -29,8 +29,8 @@
           alert("總分:" + total);
         })
         $("#button").click(function(){
-          var new_stu_id = studentCollection.find().length;
-          console.log(new_stu_id);
+          var stu_size = studentCollection.find().length;
+          console.log(studentCollection.find()[new_stu_id - 1].id);
           console.log($("#name").val());
           console.log($("#age").val());
         })
