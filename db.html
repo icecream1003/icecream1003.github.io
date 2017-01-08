@@ -11,7 +11,6 @@
     var scoreCollection = db.collection("score")
     var load_count = 0;
     function after_load(){
-      var stu_size = studentCollect.find().length;
       load_count = load_count + 1;
       if(load_count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
