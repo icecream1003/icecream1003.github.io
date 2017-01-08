@@ -24,14 +24,12 @@
         $("body").on("click", ".btn", function(){
           var score_id = $(this).attr("data-id")/1;
           console.log(score_id);
-          var score_save = [];
-          score_save.push(scoreCollection.find()[score_id].english);
-          score_save.push(scoreCollection.find()[score_id].chinese);
-          score_save.push(scoreCollection.find()[score_id].math);
-         
-          var score_total = score_save[0] + score_save[1] + score_save[2];
-          var score_average = score_total/3;
-          alert("總分:" + score_total + "，平均:" + score_average);
+          var score_save = scoreCollection.find({id:id});
+          var total = 0;
+          for(var i=0;i<score_save.length;i++){
+            var total += score_save[i];
+          }
+          alert("總分:" + total);
         })
       }
       
@@ -44,11 +42,10 @@
       this.age = age;
       this.id = id;
     }
-    function score(id, english, chinese, math){
+    function score(id, subject, score){
       this.id = id;
-      this.english = english;
-      this.chinese = chinese;
-      this.math = math;
+      this.subject = subject;
+      this.score = score;
     }
     function save_student(){
       var student1 = new student("Fiona", 12, 0);
@@ -57,10 +54,12 @@
       studentCollection.insert(student2);
       studentCollection.save();
       
-      var student1_score = new score(0, 90, 70, 80);
-      var student2_score = new score(1, 50, 60, 70);
-      scoreCollection.insert(student1_score);
-      scoreCollection.insert(student2_score);
+      scoreCollection.insert(new score(0, "english", 90));
+      scoreCollection.insert(new score(0, "chinese", 70));
+      scoreCollection.insert(new score(0, "math", 80));
+      scoreCollection.insert(new score(1, "english", 50));
+      scoreCollection.insert(new score(1, "chinese", 60));
+      scoreCollection.insert(new score(1, "math", 70));
       scoreCollection.save();
     }
 
