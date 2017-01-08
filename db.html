@@ -25,13 +25,10 @@
           var score_id = $(this).attr("data-id")/1;
           console.log(score_id);
           var score_save = [];
-          for(var i=0;i<scoreCollection.find().length;i++){
-            if(scoreCollection.find()[i].id == score_id){
-              score_save.push(scoreCollection.find()[i].english);
-              score_save.push(scoreCollection.find()[i].chinese);
-              score_save.push(scoreCollection.find()[i].math);
-            }
-          }
+          score_save.push(scoreCollection.find()[score_id].english);
+          score_save.push(scoreCollection.find()[score_id].chinese);
+          score_save.push(scoreCollection.find()[score_id].math);
+         
           var score_total = score_save[0] + score_save[1] + score_save[2];
           var score_average = score_total/3;
           alert("總分:" + score_total + "，平均:" + score_average);
