@@ -29,6 +29,8 @@
           alert("總分:" + total);
         })
         $("#button").click(function(){
+          var new_stu_id = studentCollection.find().length;
+          console.log(new_stu_id);
           console.log($("#name").val());
           console.log($("#age").val());
         })
