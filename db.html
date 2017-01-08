@@ -14,9 +14,6 @@
       load_count = load_count + 1;
       if(load_count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
-          console.log("name:" + studentCollection.find()[i].name);
-          console.log("age:" + studentCollection.find()[i].age);
-          console.log(scoreCollection.find()[i].subject + scoreCollection.find()[i].score);
           $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default" data-id="'+i+'">Detail</a></td><tr>')
         }
         $("body").on("click", ".btn", function(){
@@ -32,6 +29,7 @@
           var stu_size = studentCollection.find().length;
           var new_id = studentCollection.find()[stu_size - 1].id + 1;
           studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
+          $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default" data-id="'+new_id+'">Detail</a></td><tr>')
           console.log(new_id);
           console.log($("#name").val());
           console.log($("#age").val());
