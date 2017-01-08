@@ -31,6 +31,7 @@
         $("#button").click(function(){
           var stu_size = studentCollection.find().length;
           var new_id = studentCollection.find()[stu_size - 1].id + 1;
+          studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
           console.log(new_id);
           console.log($("#name").val());
           console.log($("#age").val());
@@ -52,10 +53,8 @@
       this.score = score;
     }
     function save_student(){
-      var student1 = new student("Fiona", 12, 0);
-      var student2 = new student("Jack", 13, 1);
-      studentCollection.insert(student1);
-      studentCollection.insert(student2);
+      studentCollection.insert(new student("Fiona", 12, 0));
+      studentCollection.insert(new student("Jack", 13, 1));
       studentCollection.save();
       
       scoreCollection.insert(new score(0, "english", 90));
