@@ -30,7 +30,7 @@
         })
         $("#button").click(function(){
           var stu_size = studentCollection.find().length;
-          console.log(studentCollection.find()[new_stu_id - 1].id);
+          console.log(studentCollection.find()[stu_size - 1].id);
           console.log($("#name").val());
           console.log($("#age").val());
         })
