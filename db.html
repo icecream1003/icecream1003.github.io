@@ -16,15 +16,13 @@
         for(var i=0;i<studentCollection.find().length;i++){
           console.log("name:" + studentCollection.find()[i].name);
           console.log("age:" + studentCollection.find()[i].age);
-          console.log("English_score:" + scoreCollection.find()[i].english);
-          console.log("Chinese_score:" + scoreCollection.find()[i].chinese);
-          console.log("Math_score:" + scoreCollection.find()[i].math);
+          console.log(scoreCollection.find()[i].subject + scoreCollection.find()[i].score);
           $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default" data-id="'+i+'">Detail</a></td><tr>')
         }
         $("body").on("click", ".btn", function(){
           var score_id = $(this).attr("data-id")/1;
           console.log(score_id);
-          var score_save = scoreCollection.find({id:score_id});
+          var score_save = scoreCollection.find({id:score_id}).score;
           var total = 0;
           for(var i=0;i<score_save.length;i++){
             var total = score_save[i] + total;
@@ -81,7 +79,7 @@
   name:<br>
   <input type="text" id="name"><br>
   age:<br>
-  <input type="text" age="lastname">
+  <input type="text" age="lastname"><br>
   <input type="submit" value="送出">
 </form>
 </body>
