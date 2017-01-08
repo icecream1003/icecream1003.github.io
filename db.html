@@ -28,14 +28,20 @@
         $("#button").click(function(){
           var stu_size = studentCollection.find().length;
           var new_id = studentCollection.find()[stu_size - 1].id + 1;
-          studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-          $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default" data-id="'+new_id+'">Detail</a></td><tr>')
-          console.log(new_id);
-          console.log($("#name").val());
-          console.log($("#age").val());
-          studentCollection.save();
-          $("#name").val("");
-          $("#age").val("");
+          if($("#name").val() == ""){
+            alert("姓名欄要輸入");
+          }else if($("#age").val() == ""){
+            alert("年齡欄要輸入");
+          }else{
+            studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
+            $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default" data-id="'+new_id+'">Detail</a></td><tr>')
+            console.log(new_id);
+            console.log($("#name").val());
+            console.log($("#age").val());
+            studentCollection.save();
+            $("#name").val("");
+            $("#age").val("");
+          }
         })
       }
     }
