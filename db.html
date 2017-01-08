@@ -22,10 +22,10 @@
         $("body").on("click", ".btn", function(){
           var score_id = $(this).attr("data-id")/1;
           console.log(score_id);
-          var score_save = scoreCollection.find({id:score_id}).score;
+          var score_save = scoreCollection.find({id:score_id});
           var total = 0;
           for(var i=0;i<score_save.length;i++){
-            var total = score_save[i] + total;
+            var total = score_save[i].score + total;
           }
           alert("總分:" + total);
         })
