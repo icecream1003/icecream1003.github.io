@@ -32,7 +32,7 @@
             alert("姓名欄要輸入");
           }else if($("#age").val() == ""){
             alert("年齡欄要輸入");
-          }else{
+          }else if(isNaN($("#age").val())){
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
             $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default" data-id="'+new_id+'">Detail</a></td><tr>')
             console.log(new_id);
@@ -41,6 +41,8 @@
             studentCollection.save();
             $("#name").val("");
             $("#age").val("");
+          }else{
+            alert("年齡欄須輸入數字");
           }
         })
       }
