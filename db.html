@@ -27,7 +27,7 @@
           var score_save = scoreCollection.find({id:id});
           var total = 0;
           for(var i=0;i<score_save.length;i++){
-            var total += score_save[i]/1;
+            var total = score_save[i] + total;
           }
           alert("總分:" + total);
         })
