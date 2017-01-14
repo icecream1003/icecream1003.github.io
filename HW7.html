@@ -22,7 +22,7 @@
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
           contactCollection.insert(new contact($("#name").val(),$("#email").val(),$("#tel").val(),$("#remark").val(),new_id));
-          $("tbody").append("<tr><td>"+$("#name").val()+"</td><td>"+$("#email").val()+"</td><td>"+$("#tel").val()+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>");
+           $("tbody").append("<tr><td>"+contactCollection.find()[new_id].name+"</td><td>"+contactCollection.find()[new_id].email+"</td><td>"+contactCollection.find()[new_id].tel+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>");
         })
       }
       
