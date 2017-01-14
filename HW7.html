@@ -21,7 +21,7 @@
         $(".btn-primary").click(function(){
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
-          contactCollection.insert(new contact($("#name").val(),$("#email").val(),$("#tel").val(),$("#remark").val(),new_id));
+          contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
            $("tbody").append("<tr><td>"+contactCollection.find()[new_id].name+"</td><td>"+contactCollection.find()[new_id].email+"</td><td>"+contactCollection.find()[new_id].tel+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>");
         })
       }
@@ -51,25 +51,25 @@
           <div class="col-md-6">
             <form action="" class="form-horizontal">
               <div class="form-group">
-                <label id="name" class="col-md-2 control-label" for="">姓名</label>
+                <label class="col-md-2 control-label" for="">姓名</label>
                 <div class="col-md-10">
                   <input type="text" id="new_name" class="form-control" placeholder="王小明">
                 </div>
               </div>
               <div class="form-group">
-                <label id="email" class="col-md-2 control-label" for="">信箱</label>
+                <label class="col-md-2 control-label" for="">信箱</label>
                 <div class="col-md-10">
                   <input type="email" id="new_email" class="form-control" placeholder="wang@gmail.com">
                 </div>
               </div>
               <div class="form-group">
-                <label id="tel" class="col-md-2 control-label" for="">電話</label>
+                <label class="col-md-2 control-label" for="">電話</label>
                 <div class="col-md-10">
                   <input type="text" id="new_phone" class="form-control" placeholder="0912-345-678">
                 </div>
               </div>
               <div class="form-group">
-                <label id="remark" class="col-md-2 control-label" for="">備註</label>
+                <label class="col-md-2 control-label" for="">備註</label>
                 <div class="col-md-10">
                   <textarea name="" id="new_note" class="form-control" id="" cols="30" rows="10"></textarea>
                 </div>
