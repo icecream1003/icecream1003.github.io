@@ -24,6 +24,9 @@
           contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
           $("tbody").append("<tr><td>"+contactCollection.find()[new_id].name+"</td><td>"+contactCollection.find()[new_id].email+"</td><td>"+contactCollection.find()[new_id].tel+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>");
           contactCollection.save();
+          $("#new_name").val("");
+          $("#new_email").val("");
+          $("#new_phone").val("");
         })
       }
       
