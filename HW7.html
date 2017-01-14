@@ -14,7 +14,7 @@
           $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>")
         }
         $("body").on("click",".btn",function(){
-          var contact_id = ${this}.attr("data-id")/1;
+          var contact_id = $(this).attr("data-id")/1;
           var contact_save = contactCollection.find({id:contact_id});
           alert(contact_save[0].remark);
         })
