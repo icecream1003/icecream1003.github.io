@@ -31,7 +31,7 @@
         })
         $("body").on("click","btn_delete",function(){
           var delete_id = $(this).attr("id")/1;
-          contactCollection.remove({id:delete_id});
+          contactCollection.remove(contactCollection.find({id:delete_id}));
           contactCollection.save();
         })
       }
