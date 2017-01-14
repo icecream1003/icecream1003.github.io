@@ -11,11 +11,16 @@
       
       function after_load(){
         for(var i=0;i<contactCollection.find().length;i++){
-          $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default' id='"+i+"'>詳細</a></td></tr>")
+          $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default' data-id='"+i+"'>詳細</a></td></tr>")
         }
+        $("body").on("click",".btn",function(){
+          var contact_id = ${this}.attr("data-id")/1;
+          var contact_save = contactCollection.find({id:contact_id});
+          alert(contact_save[0].remark);
+        })
       }
       
-      function contact(name,email,tel,remark){
+      function contact(name,email,tel,remark,id){
         this.name = name;
         this.email = email;
         this.tel = tel;
@@ -23,8 +28,8 @@
       }
       
       function save_contact(){
-        contactCollection.insert(new contact("123","hello@gmail.conm","0987-654-321","有個弟弟,叫456"));
-        contactCollection.insert(new contact("456","HI@gmail.com","0959-487-487","有個哥哥,叫123"));
+        contactCollection.insert(new contact("123","hello@gmail.conm","0987-654-321","有個弟弟,叫456",0));
+        contactCollection.insert(new contact("456","HI@gmail.com","0959-487-487","有個哥哥,叫123",1));
         contactCollection.save();
       }
       
