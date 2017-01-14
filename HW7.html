@@ -4,6 +4,26 @@
     <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("db");
+      var contactCollection = db.collection("contact")
+      
+      function after_load(){
+        for(var i=0;i<contactCollection.find().length;i++){
+          $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default' id='"+i+"'>詳細</a></td><tr>")
+        }
+      }
+      
+      function contact(name,email,tel,remark){
+        this.name = name;
+        this.email = email;
+        this.tel = tel;
+        this.remark = remark;
+      }
+      
+      contactCollection.load(after_load);
+    </script>
   </head>
   <body>
     <br>
