@@ -13,12 +13,12 @@
         for(var i=0;i<contactCollection.find().length;i++){
           $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+i+"'>詳細</a></td><td><a class='btn btn-default btn_delete' id='"+i+"'>刪除</a></td></tr>");
         }
-        $("body").on("click",".btn-default",function(){
+        $("body").on("click",".btn_remark",function(){
           var contact_id = $(this).attr("data-id")/1;
           var contact_save = contactCollection.find({id:contact_id});
           alert(contact_save[0].remark);
         })
-        $(".btn_remark").click(function(){
+        $(".btn-primary").click(function(){
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
           contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
@@ -28,6 +28,10 @@
           $("#new_email").val("");
           $("#new_phone").val("");
           $("#new_note").val("");
+        })
+        $("body").on("click","btn_delete",function(){
+          var delete_id = $(this).attr("id")/1;
+          contactCollection.remove({id:delete_id});
         })
       }
       
