@@ -64,11 +64,17 @@
           }
         })
         $("body").on("click",".btn_delete",function(){
-          var delete_id = $(this).attr("data-id")/1;
-          studentCollection.remove({id:delete_id});
-          studentCollection.remove({id:delete_id});
-          $(this).closest("tr").remove();
-          studentCollection.save();
+          var ask_for_sure=confirm("Do you want to delete?")
+          if(ask_for_sure==true){
+            var delete_id = $(this).attr("data-id")/1;
+            studentCollection.remove({id:delete_id});
+            studentCollection.remove({id:delete_id});
+            $(this).closest("tr").remove();
+            studentCollection.save();
+            document.write("You pressed OK!")
+          }else{
+            document.write("You pressed Cancel!")
+          }
         })
       }
     }
