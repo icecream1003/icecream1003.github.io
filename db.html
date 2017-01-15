@@ -9,14 +9,14 @@
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
     var scoreCollection = db.collection("score")
-    var load_count = 0;
+    
     function after_load(){
       load_count = load_count + 1;
       if(load_count == 2){
         for(var i=0;i<studentCollection.find().length;i++){
-          $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default" data-id="'+i+'">Detail</a></td><tr>')
+          $("tbody").append('<tr><td>'+studentCollection.find()[i].name+'</td><td>'+studentCollection.find()[i].age+'</td><td><a class="btn btn-default btn_detail" data-id="'+i+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+i+'">刪除</a></td><tr>')
         }
-        $("body").on("click", ".btn", function(){
+        $("body").on("click", ".btn_detail", function(){
           var score_id = $(this).attr("data-id")/1;
           var score_save = scoreCollection.find({id:score_id});
           var total = 0;
@@ -34,7 +34,7 @@
             alert("年齡欄要輸入");
           }else{
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-            $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default" data-id="'+new_id+'">Detail</a></td><tr>')
+            $("tbody").append('<tr><td>'+studentCollection.find()[new_id].name+'</td><td>'+studentCollection.find()[new_id].age+'</td><td><a class="btn btn-default btn_detail" data-id="'+new_id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+new_id+'">刪除</a></td><tr>')
             console.log(new_id);
             console.log($("#name").val());
             console.log($("#age").val());
@@ -43,12 +43,11 @@
             $("#age").val("");
           }
         })
+        $("body").on("click","btn_delete",function(){
+          
+        })
       }
     }
-
-    studentCollection.load(after_load);
-    scoreCollection.load(after_load);
-    
     function student(name, age, id){
       this.name = name;
       this.age = age;
@@ -74,6 +73,10 @@
       scoreCollection.insert(new score(1, "math", 70));
       scoreCollection.save();
     }
+        
+    var load_count = 0;
+    studentCollection.load(after_load);
+    scoreCollection.load(after_load);
   </script>
 </head>
 <body>
@@ -82,6 +85,7 @@
       <tr>
         <td>姓名</td>
         <td>年齡</td>
+        <td></td>
         <td></td>
       </tr>
     </thead>
