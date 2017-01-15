@@ -68,7 +68,7 @@
             alert("年齡欄要輸入");
           }else{
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-            var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new.id).replace("delete_id",new.id);
+            var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id);
             $("tbody").append("<tr>"+append_newthing+"</tr>")
             studentCollection.save();
             $("#name").val("");
