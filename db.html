@@ -51,7 +51,6 @@
         $("#button").click(function(){
           var stu_size = studentCollection.find().length;
           var new_id = studentCollection.find()[stu_size - 1].id + 1;
-          console.log(new_id);
           if($("#name").val() == ""){
             alert("姓名欄要輸入");
           }else if($("#age").val() == ""){
@@ -59,7 +58,6 @@
           }else{
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
             $("tbody").append('<tr><td>'+$('#name').val()+'</td><td>'+$("#age").val()+'</td><td><a class="btn btn-default btn_detail" data-id="'+new_id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+new_id+'">刪除</a></td><tr>')
-            console.log(new_id);
             studentCollection.save();
             $("#name").val("");
             $("#age").val("");
