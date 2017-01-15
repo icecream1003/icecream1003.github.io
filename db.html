@@ -4,6 +4,28 @@
   <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>姓名</td>
+        <td>年齡</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <form>
+  name:<br>
+  <input type="text" id="name"><br>
+  age:<br>
+  <input type="text" id="age"><br>
+  <input type="button" value="送出" id="button">
+</form>
   <script>
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
@@ -78,26 +100,5 @@
     studentCollection.load(after_load);
     scoreCollection.load(after_load);
   </script>
-</head>
-<body>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>姓名</td>
-        <td>年齡</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <form>
-  name:<br>
-  <input type="text" id="name"><br>
-  age:<br>
-  <input type="text" id="age"><br>
-  <input type="button" value="送出" id="button">
-</form>
 </body>
 </html>
