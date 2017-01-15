@@ -58,8 +58,7 @@
             alert("年齡欄要輸入");
           }else{
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-            var stu_find = studentCollection.find()[new_id];
-            $("tbody").append('<tr><td>'+stu_find.name+'</td><td>'+stu_find.age+'</td><td><a class="btn btn-default btn_detail" data-id="'+new_id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+new_id+'">刪除</a></td><tr>')
+            $("tbody").append('<tr><td>'+$('#name').val()+'</td><td>'+$("#age").val()+'</td><td><a class="btn btn-default btn_detail" data-id="'+new_id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+new_id+'">刪除</a></td><tr>')
             console.log(new_id);
             studentCollection.save();
             $("#name").val("");
