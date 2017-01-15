@@ -7,6 +7,14 @@
 
 </head>
 <body>
+  <div class="template">
+    <tr>
+      <td>name</td>
+      <td>age</td>
+      <td><a class="btn btn-default btn_detail" data-id="detail_id">Detail</a></td>
+      <td><a class="btn btn-default btn_delete" data-id="delete_id">刪除</a></td>
+    </tr>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -31,13 +39,16 @@
     var db = fdb.db("db");
     var studentCollection = db.collection("students")
     var scoreCollection = db.collection("score")
+    $(".template").hide();
+
     
     function after_load(){
       load_count = load_count + 1;
       if(load_count == 2){ 
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
-          $("tbody").append('<tr><td>'+find.name+'</td><td>'+find.age+'</td><td><a class="btn btn-default btn_detail" data-id="'+find.id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+find.id+'">刪除</a></td><tr>')
+          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id)
+          $("tbody").append(append_thing);
         }
         $("body").on("click", ".btn_detail", function(){
           var score_id = $(this).attr("data-id")/1;
