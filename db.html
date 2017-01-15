@@ -65,7 +65,7 @@
             $("#age").val("");
           }
         })
-        $("body").on("click","btn_delete",function(){
+        $("body").on("click",".btn_delete",function(){
           var delete_id = $(this).attr("data-id")/1;
           console.log(delete_id)
           studentCollection.remove({id:detele_id});
