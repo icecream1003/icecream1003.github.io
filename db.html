@@ -18,14 +18,12 @@
       </tr>
     </thead>
     <tbody>
-      <div class="template">
-        <tr>
-          <td>name</td>
-          <td>age</td>
-          <td><a class="btn btn-default btn_detail" data-id="detail_id">Detail</a></td>
-          <td><a class="btn btn-default btn_delete" data-id="delete_id">刪除</a></td>
-        </tr>
-      </div>
+      <tr class="template">
+        <td>name</td>
+        <td>age</td>
+        <td><a class="btn btn-default btn_detail" data-id="detail_id">Detail</a></td>
+        <td><a class="btn btn-default btn_delete" data-id="delete_id">刪除</a></td>
+      </tr>
     </tbody>
   </table>
   <form>
@@ -49,7 +47,7 @@
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id)
-          console.log(append_thing);
+          console.log("<tr>"+append_thing+"</tr>");
           $("tbody").append(append_thing);
         }
         $("body").on("click", ".btn_detail", function(){
