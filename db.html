@@ -46,7 +46,7 @@
       if(load_count == 2){ 
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
-          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id)
+          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id);
           console.log("<tr>"+append_thing+"</tr>");
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
@@ -68,7 +68,8 @@
             alert("年齡欄要輸入");
           }else{
             studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-            $("tbody").append('<tr><td>'+$('#name').val()+'</td><td>'+$("#age").val()+'</td><td><a class="btn btn-default btn_detail" data-id="'+new_id+'">Detail</a></td><td><a class="btn btn-default btn_delete" data-id="'+new_id+'">刪除</a></td><tr>')
+            var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new.id).replace("delete_id",new.id);
+            $("tbody").append("<tr>"+append_newthing+"</tr>")
             studentCollection.save();
             $("#name").val("");
             $("#age").val("");
