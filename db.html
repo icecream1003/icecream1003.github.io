@@ -48,7 +48,7 @@
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id)
           console.log("<tr>"+append_thing+"</tr>");
-          $("tbody").append(append_thing);
+          $("tbody").append("<tr>"append_thing"</tr>");
         }
         $("body").on("click", ".btn_detail", function(){
           var score_id = $(this).attr("data-id")/1;
