@@ -29,7 +29,7 @@
           $("#new_phone").val("");
           $("#new_note").val("");
         })
-        $("body").on("click","btn_delete",function(){
+        $("body").on("click",".btn_delete",function(){
           var delete_id = $(this).attr("data-id")/1;
           contactCollection.remove({id:delete_id});
           $(this).closest("tr").remove();
