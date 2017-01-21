@@ -22,7 +22,7 @@
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
           contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
-          $("tbody").append("<tr><td>"+contactCollection.find()[new_id].name+"</td><td>"+contactCollection.find()[new_id].email+"</td><td>"+contactCollection.find()[new_id].tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+i+"'>詳細</a></td><td><a class='btn btn-default btn_delete' id='"+i+"'>刪除</a></td></tr>");
+          $("tbody").append("<tr><td>"+contactCollection.find()[new_id].name+"</td><td>"+contactCollection.find()[new_id].email+"</td><td>"+contactCollection.find()[new_id].tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+new_id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' id='"+new_id+"'>刪除</a></td></tr>");
           contactCollection.save();
           $("#new_name").val("");
           $("#new_email").val("");
