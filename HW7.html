@@ -4,56 +4,7 @@
     <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <script>
-      var fdb = new ForerunnerDB();
-      var db = fdb.db("db");
-      var contactCollection = db.collection("contact")
-      
-      function after_load(){
-        for(var i=0;i<contactCollection.find().length;i++){
-          var find = contactCollection.find()[i];
-          $("tbody").append("<tr><td>"+find.name+"</td><td>"+find.email+"</td><td>"+find.tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+find.id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+find.id+"'>刪除</a></td></tr>");
-        }
-        $("body").on("click",".btn_remark",function(){
-          var contact_id = $(this).attr("data-id")/1;
-          var contact_save = contactCollection.find({id:contact_id});
-          alert(contact_save[0].remark);
-        })
-        $(".btn-primary").click(function(){
-          var con_size = contactCollection.find().length;
-          var new_id = contactCollection.find()[con_size - 1].id + 1;
-          contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
-          $("tbody").append("<tr><td>"+$("#new_name").val()+"</td><td>"+$("#new_email").val()+"</td><td>"+$("#new_phone").val()+"</td><td><a class='btn btn-default btn_remark' data-id='"+new_id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' id='"+new_id+"'>刪除</a></td></tr>");
-          contactCollection.save();
-          $("#new_name").val("");
-          $("#new_email").val("");
-          $("#new_phone").val("");
-          $("#new_note").val("");
-        })
-        $("body").on("click",".btn_delete",function(){
-          var delete_id = $(this).attr("data-id")/1;
-          contactCollection.remove({id:delete_id});
-          $(this).closest("tr").remove();
-          contactCollection.save();
-        })
-      }
-      
-      function contact(name,email,tel,remark,id){
-        this.name = name;
-        this.email = email;
-        this.tel = tel;
-        this.remark = remark;
-        this.id = id;
-      }
-      
-      function save_contact(){
-        contactCollection.insert(new contact("123","hello@gmail.conm","0987-654-321","有個弟弟,叫456",0));
-        contactCollection.insert(new contact("456","HI@gmail.com","0959-487-487","有個哥哥,叫123",1));
-        contactCollection.save();
-      }
-      
-      contactCollection.load(after_load);
-    </script>
+    
   </head>
   <body>
     <br>
@@ -119,5 +70,55 @@
         </div>
       </div>
     </div>
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("db");
+      var contactCollection = db.collection("contact")
+      
+      function after_load(){
+        for(var i=0;i<contactCollection.find().length;i++){
+          var find = contactCollection.find()[i];
+          $("tbody").append("<tr><td>"+find.name+"</td><td>"+find.email+"</td><td>"+find.tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+find.id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+find.id+"'>刪除</a></td></tr>");
+        }
+        $("body").on("click",".btn_remark",function(){
+          var contact_id = $(this).attr("data-id")/1;
+          var contact_save = contactCollection.find({id:contact_id});
+          alert(contact_save[0].remark);
+        })
+        $(".btn-primary").click(function(){
+          var con_size = contactCollection.find().length;
+          var new_id = contactCollection.find()[con_size - 1].id + 1;
+          contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
+          $("tbody").append("<tr><td>"+$("#new_name").val()+"</td><td>"+$("#new_email").val()+"</td><td>"+$("#new_phone").val()+"</td><td><a class='btn btn-default btn_remark' data-id='"+new_id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' id='"+new_id+"'>刪除</a></td></tr>");
+          contactCollection.save();
+          $("#new_name").val("");
+          $("#new_email").val("");
+          $("#new_phone").val("");
+          $("#new_note").val("");
+        })
+        $("body").on("click",".btn_delete",function(){
+          var delete_id = $(this).attr("data-id")/1;
+          contactCollection.remove({id:delete_id});
+          $(this).closest("tr").remove();
+          contactCollection.save();
+        })
+      }
+      
+      function contact(name,email,tel,remark,id){
+        this.name = name;
+        this.email = email;
+        this.tel = tel;
+        this.remark = remark;
+        this.id = id;
+      }
+      
+      function save_contact(){
+        contactCollection.insert(new contact("123","hello@gmail.conm","0987-654-321","有個弟弟,叫456",0));
+        contactCollection.insert(new contact("456","HI@gmail.com","0959-487-487","有個哥哥,叫123",1));
+        contactCollection.save();
+      }
+      
+      contactCollection.load(after_load);
+    </script>
   </body>
 </html>
