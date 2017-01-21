@@ -11,7 +11,7 @@
       
       function after_load(){
         for(var i=0;i<contactCollection.find().length;i++){
-          $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+contactCollection.find()[i].remark+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+i+"'>刪除</a></td></tr>");
+          $("tbody").append("<tr><td>"+contactCollection.find()[i].name+"</td><td>"+contactCollection.find()[i].email+"</td><td>"+contactCollection.find()[i].tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+contactCollection.find()[i].id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+contactCollection.find()[i].id+"'>刪除</a></td></tr>");
         }
         $("body").on("click",".btn_remark",function(){
           var contact_id = $(this).attr("data-id")/1;
@@ -30,8 +30,9 @@
           $("#new_note").val("");
         })
         $("body").on("click","btn_delete",function(){
-          var delete_id = $(this).attr("id")/1;
+          var delete_id = $(this).attr("data-id")/1;
           contactCollection.remove({id:delete_id});
+          $(this).closest("tr").remove();
           contactCollection.save();
         })
       }
