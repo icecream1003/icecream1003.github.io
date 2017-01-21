@@ -11,7 +11,7 @@
       
       function after_load(){
         for(var i=0;i<contactCollection.find().length;i++){
-          var find = contactCollection.find[i];
+          var find = contactCollection.find()[i];
           $("tbody").append("<tr><td>"+find.name+"</td><td>"+find.email+"</td><td>"+find.tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+find.id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+find.id+"'>刪除</a></td></tr>");
         }
         $("body").on("click",".btn_remark",function(){
