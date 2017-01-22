@@ -112,8 +112,7 @@
           var change_save = studentCollection.find({id:change_id});
           $("#mymodal").modal("show");
           $("#change_name").val(change_save[0].name);
-          console.log(change_save[0].name);
-          $("#change_name").val(change_save[0].age);
+          $("#change_age").val(change_save[0].age);
           console.log(change_save[0].name);
           console.log(change_save[0].age);
           console.log(change_save[0].id);
