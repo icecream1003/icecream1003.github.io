@@ -87,10 +87,10 @@
         })
         $("body").on("click",".btn_change",function(){
           var change_id = $(this).attr("data_id")/1;
-          var find = studentCollection.find();
-          console.log(find[change_id].name);
-          console.log(find[change_id].age);
-          console.log(find[change_id].id);
+          var change_save = studentCollection.find({id:change_id});
+          console.log(change_save[change_id].name);
+          console.log(change_save[change_id].age);
+          console.log(change_save[change_id].id);
         })
       }
     }
