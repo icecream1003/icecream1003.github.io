@@ -120,7 +120,7 @@
           console.log(change_save[0].id);
         })
         $("#save_change").click(function(){
-          studentCollection.update({id:change_stuid}, {name:$("#change_name").val()});
+          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
           studentCollection.save();
           $("#mymodal").modal("hide");
         })
