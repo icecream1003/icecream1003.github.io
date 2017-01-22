@@ -110,6 +110,7 @@
         $("body").on("click",".btn_change",function(){
           var change_id = $(this).attr("data-id")/1;
           var change_save = studentCollection.find({id:change_id});
+          $("#mymodal").modal("show");
           console.log(change_save[0].name);
           console.log(change_save[0].age);
           console.log(change_save[0].id);
