@@ -73,59 +73,63 @@
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id);
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
-        $("body").on("click", ".btn_detail", function(){
-          var score_id = $(this).attr("data-id")/1;
-          var score_save = scoreCollection.find({id:score_id});
-          var total = 0;
-          for(var i=0;i<score_save.length;i++){
-            var total = score_save[i].score + total;
-          }
-          alert("總分:" + total);
-        })
-        $("#button").click(function(){
-          var stu_size = studentCollection.find().length;
-          var new_id = studentCollection.find()[stu_size - 1].id + 1;
-          if($("#name").val() == ""){
-            alert("姓名欄要輸入");
-          }else if($("#age").val() == ""){
-            alert("年齡欄要輸入");
-          }else{
-            studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-            var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id);
-            $("tbody").append("<tr>"+append_newthing+"</tr>")
-            studentCollection.save();
-            $("#name").val("");
-            $("#age").val("");
-          }
-        })
-        $("body").on("click",".btn_delete",function(){
-          var ask_for_sure = confirm("Do you want to delete?")
-          if(ask_for_sure == true){
-            var delete_id = $(this).attr("data-id")/1;
-            studentCollection.remove({id:delete_id});
-            studentCollection.remove({id:delete_id});
-            $(this).closest("tr").remove();
-            studentCollection.save();
-          }
-        })
-        $("body").on("click",".btn_change",function(){
-          var change_id = $(this).attr("data-id")/1;
-          change_stuid = change_id;
-          var change_save = studentCollection.find({id:change_id});
-          $("#mymodal").modal("show");
-          $("#change_name").val(change_save[0].name);
-          $("#change_age").val(change_save[0].age);
-          console.log(change_save[0].name);
-          console.log(change_save[0].age);
-          console.log(change_save[0].id);
-        })
-        $("#save_change").click(function(){
-          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
-          studentCollection.save();
-          $("#mymodal").modal("hide");
-        })
       }
     }
+    $("body").on("click", ".btn_detail", function(){
+      var score_id = $(this).attr("data-id")/1;
+      var score_save = scoreCollection.find({id:score_id});
+      var total = 0;
+      for(var i=0;i<score_save.length;i++){
+        var total = score_save[i].score + total;
+      }
+      alert("總分:" + total);
+    })
+    $("#button").click(function(){
+      var stu_size = studentCollection.find().length;
+      var new_id = studentCollection.find()[stu_size - 1].id + 1;
+      if($("#name").val() == ""){
+        alert("姓名欄要輸入");
+      }else if($("#age").val() == ""){
+        alert("年齡欄要輸入");
+      }else{
+        studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
+        var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id);
+        $("tbody").append("<tr>"+append_newthing+"</tr>")
+        studentCollection.save();
+        $("#name").val("");
+        $("#age").val("");
+      }
+    })
+    $("body").on("click",".btn_delete",function(){
+      var ask_for_sure = confirm("Do you want to delete?")
+      if(ask_for_sure == true){
+        var delete_id = $(this).attr("data-id")/1;
+        studentCollection.remove({id:delete_id});
+        studentCollection.remove({id:delete_id});
+        $(this).closest("tr").remove();
+        studentCollection.save();
+      }
+    })
+    $("body").on("click",".btn_change",function(){
+      var change_id = $(this).attr("data-id")/1;
+      change_stuid = change_id;
+      var change_save = studentCollection.find({id:change_id});
+      $("#mymodal").modal("show");
+      $("#change_name").val(change_save[0].name);
+      $("#change_age").val(change_save[0].age);
+      console.log(change_save[0].name);
+      console.log(change_save[0].age);
+      console.log(change_save[0].id);
+    })
+    $("#save_change").click(function(){
+      studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
+      studentCollection.save();
+      $("#mymodal").modal("hide");
+      $("tbody").html("");
+      after_load();
+    })
+      
+    
     function student(name, age, id){
       this.name = name;
       this.age = age;
