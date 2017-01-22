@@ -117,9 +117,6 @@
       $("#mymodal").modal("show");
       $("#change_name").val(change_save[0].name);
       $("#change_age").val(change_save[0].age);
-      console.log(change_save[0].name);
-      console.log(change_save[0].age);
-      console.log(change_save[0].id);
     })
     $("#save_change").click(function(){
       studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
