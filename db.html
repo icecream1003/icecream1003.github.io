@@ -48,7 +48,9 @@
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id);
-          console.log("<tr>"+append_thing+"</tr>");
+          console.log(find.name);
+          console.log(find.age);
+          console.log(find.id);
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
         $("body").on("click", ".btn_detail", function(){
