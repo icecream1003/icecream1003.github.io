@@ -87,7 +87,7 @@
         })
         $("body").on("click",".btn_change",function(){
           var change_id = $(this).attr("data_id")/1;
-          var change_save = studentCollection.find({id:change_id});
+          var change_save = studentCollection.find({id:change_id})[0];
           console.log(change_save.name);
           console.log(change_save.age);
           console.log(change_save.id);
