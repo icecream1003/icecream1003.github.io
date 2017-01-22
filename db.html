@@ -125,7 +125,7 @@
       studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
       studentCollection.save();
       $("#mymodal").modal("hide");
-      $("tbody").html("");
+      $("tbody tr:not(.template)").html("");
       after_load();
     })
       
