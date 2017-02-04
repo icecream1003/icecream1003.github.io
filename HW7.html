@@ -130,7 +130,7 @@
         })
         $("body").on("click",".btn_change",function(){
           var change_id = $(this).attr("data-id")/1;
-          var stuid = change_id;
+          var change_stuid = change_id;
           var change_save = contactCollection.find({id:change_id});
           $("#mymodal").modal("show");
           $("#change_name").val(change_save[0].name);
