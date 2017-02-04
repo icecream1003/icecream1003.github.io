@@ -65,7 +65,7 @@
               </div>
               <div class="form-group">
                 <div class="col-md-12">
-                  <input type="button" value="新增" id="add_contact_btn" class="btn pull-right btn-primary">
+                  <input type="button" value="新增" id="add_contact_btn" class="btn pull-right btn-primary btn_append">
                 </div>
               </div>
             </form>
@@ -111,7 +111,7 @@
           var contact_save = contactCollection.find({id:contact_id});
           alert(contact_save[0].remark);
         })
-        $(".btn-primary").click(function(){
+        $(".btn_append").click(function(){
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
           contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
