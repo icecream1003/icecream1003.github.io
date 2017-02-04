@@ -139,8 +139,8 @@
           $("#change_remark").val(change_save[0].remark);
         })
         $("#save_change").click(function(){
-          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),email:$("#change_email").val(),tel:$("#change_tel").val(),remark:$("#change_remark).val()});
-          studentCollection.save();
+          contactCollection.update({id:change_stuid}, {name:$("#change_name").val(),email:$("#change_email").val(),tel:$("#change_tel").val(),remark:$("#change_remark).val()});
+          contactCollection.save();
           $("#mymodal").modal("hide");
           after_load();
         })
