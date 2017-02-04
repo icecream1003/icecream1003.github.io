@@ -124,7 +124,7 @@
           $(this).closest("tr").remove();
           contactCollection.save();
         })
-        $("body").on("click",function(){
+        $("body").on("click",".btn_change",function(){
           var change_id = $(this).attr("data-id")/1;
           var stuid = change_id;
           var change_save = contactCollection.find({id:change_id});
@@ -132,7 +132,7 @@
           $("#change_name").val(change_save[0].name);
           $("#change_age").val(change_save[0].age);
         })
-        $("#save_change").on("click",function(){
+        $("#save_change").click(function(){
           studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
           studentCollection.save();
           $("#mymodal").modal("hide");
