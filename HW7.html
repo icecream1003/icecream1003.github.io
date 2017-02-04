@@ -7,6 +7,28 @@
     
   </head>
   <body>
+      <div id="mymodal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>姓名</p>
+        <input type="text" id="change_name">
+        <p>年齡</p>
+        <input type="text" id="change_age">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="save_change" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    
+    
     <br>
     <div class="row">
       <div class="container">
@@ -78,7 +100,7 @@
       function after_load(){
         for(var i=0;i<contactCollection.find().length;i++){
           var find = contactCollection.find()[i];
-          $("tbody").append("<tr><td>"+find.name+"</td><td>"+find.email+"</td><td>"+find.tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+find.id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+find.id+"'>刪除</a></td></tr>");
+          $("tbody").append("<tr><td>"+find.name+"</td><td>"+find.email+"</td><td>"+find.tel+"</td><td><a class='btn btn-default btn_remark' data-id='"+find.id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+find.id+"'>刪除</a></td><td><a class='btn btn-default btn_change' data-id='"+find.id+"'>修改</a></td></tr>");
         }
         $("body").on("click",".btn_remark",function(){
           var contact_id = $(this).attr("data-id")/1;
@@ -89,7 +111,7 @@
           var con_size = contactCollection.find().length;
           var new_id = contactCollection.find()[con_size - 1].id + 1;
           contactCollection.insert(new contact($("#new_name").val(),$("#new_email").val(),$("#new_phone").val(),$("#new_note").val(),new_id));
-          $("tbody").append("<tr><td>"+$("#new_name").val()+"</td><td>"+$("#new_email").val()+"</td><td>"+$("#new_phone").val()+"</td><td><a class='btn btn-default btn_remark' data-id='"+new_id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+new_id+"'>刪除</a></td></tr>");
+          $("tbody").append("<tr><td>"+$("#new_name").val()+"</td><td>"+$("#new_email").val()+"</td><td>"+$("#new_phone").val()+"</td><td><a class='btn btn-default btn_remark' data-id='"+new_id+"'>詳細</a></td><td><a class='btn btn-default btn_delete' data-id='"+new_id+"'>刪除</a></td><td><a class='btn btn-default btn_change' data-id='"+new_id+"'>修改</a></td></tr>");
           contactCollection.save();
           $("#new_name").val("");
           $("#new_email").val("");
@@ -102,6 +124,21 @@
           $(this).closest("tr").remove();
           contactCollection.save();
         })
+        $("body").on("click",function(){
+          var change_id = $(this).attr("data-id")/1;
+          var stuid = change_id;
+          var change_save = contactCollection.find(id:change_id);
+          $("#mymodal").modal("show");
+          $("#change_name").val(change_save[0].name);
+          $("#change_age").val(change_save[0].age);
+        })
+        $("#save_change").on("click",function(){
+          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
+          studentCollection.save();
+          $("#mymodal").modal("hide");
+          after_load();
+        })
+        
       }
       
       function contact(name,email,tel,remark,id){
