@@ -17,8 +17,12 @@
       <div class="modal-body">
         <p>姓名</p>
         <input type="text" id="change_name">
-        <p>年齡</p>
-        <input type="text" id="change_age">
+        <p>信箱</p>
+        <input type="text" id="change_email">
+        <p>電話</p>
+        <input type="text" id="change_tel">
+        <p>備註</p>
+        <input type="text" id="change_remark">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -130,10 +134,12 @@
           var change_save = contactCollection.find({id:change_id});
           $("#mymodal").modal("show");
           $("#change_name").val(change_save[0].name);
-          $("#change_age").val(change_save[0].age);
+          $("#change_email").val(change_save[0].email);
+          $("#change_tel").val(change_save[0].tel);
+          $("#change_remark").val(change_save[0].remark);
         })
         $("#save_change").click(function(){
-          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
+          studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),email:$("#change_email").val(),tel:$("#change_tel").val(),remark:$("#change_remark).val()});
           studentCollection.save();
           $("#mymodal").modal("hide");
           after_load();
