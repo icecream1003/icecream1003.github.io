@@ -142,9 +142,7 @@
           contactCollection.update({id:change_stuid}, {name:$("#change_name").val(),email:$("#change_email").val(),tel:$("#change_tel").val(),remark:$("#change_remark").val()});
           contactCollection.save();
           $("#mymodal").modal("hide");
-          console.log("1");
           $("tbody tr").html("");
-          console.log("2");
           after_load();
         })
         
