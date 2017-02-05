@@ -129,7 +129,10 @@
     })
     $("search").click(function(){
         var gte_val = $("age_gte").val;
-        console.log(studentCollection.find({age:{$gte:gte_val}}));
+        var save_agegte = studentCollection.find({age:{$gte:gte_val}});
+        for(var i=0;i<save_agegte;i++){
+            console.log(save_agegte[i].name);
+        }
     })
       
     
