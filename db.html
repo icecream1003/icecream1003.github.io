@@ -58,6 +58,8 @@
   </form>
   年齡大於:<br>
   <input type="text" id="age_gte"><br>
+  年齡小於:<br>
+  <input type="text" id="age_lte"><br>
   <input type="button" value="搜尋" id="search">
   <script>
     var fdb = new ForerunnerDB();
@@ -128,8 +130,9 @@
       after_load();
     })
     $("#search").click(function(){
+        var lte_val = $("#age_lte").val()/1;
         var gte_val = $("#age_gte").val()/1;
-        var save_agegte = studentCollection.find({age:{$gte:gte_val}});
+        var save_age = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}});
         $("tbody tr:not(.template)").html("");
         for(var i=0;i<save_agegte.length;i++){
             var append_newthing = $(".template").html().replace("name",save_agegte[i].name).replace("age",save_agegte[i].age).replace("detail.id",save_agegte[i].id).replace("delete_id",save_agegte[i].id).replace("change_id",save_agegte[i].id);
