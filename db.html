@@ -127,8 +127,8 @@
       $("tbody tr:not(.template)").html("");
       after_load();
     })
-    $("search").click(function(){
-        var gte_val = $("age_gte").val()/1;
+    $("#search").click(function(){
+        var gte_val = $("#age_gte").val()/1;
         var save_agegte = studentCollection.find({age:{$gte:gte_val}});
         for(var i=0;i<save_agegte.lenght;i++){
             console.log(save_agegte[i].name);
