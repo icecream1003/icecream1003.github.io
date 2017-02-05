@@ -133,12 +133,12 @@
         var lte_val = $("#age_lte").val()/1;
         var gte_val = $("#age_gte").val()/1;
         
-        if(gte_val==0){
-            var save_age = studentCollection.find({age:{$lte:lte_val}});
+        if(gte_val==0 && lte_val==0){
+            var save_age = studentCollection.find();
         }else if(lte_val==0){
             var save_age = studentCollection.find({age:{$gte:gte_val}});
-        }else if(gte_val==0 && lte_val==0){
-             var save_age = studentCollection.find(); 
+        }else if(gte_val==0){
+             var save_age = studentCollection.find({age:{$lte:lte_val}}); 
         }else{
             var save_age = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}});
         }
