@@ -134,8 +134,8 @@
         var gte_val = $("#age_gte").val()/1;
         var save_age = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}});
         $("tbody tr:not(.template)").html("");
-        for(var i=0;i<save_agegte.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_agegte[i].name).replace("age",save_agegte[i].age).replace("detail.id",save_agegte[i].id).replace("delete_id",save_agegte[i].id).replace("change_id",save_agegte[i].id);
+        for(var i=0;i<save_age.length;i++){
+            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
