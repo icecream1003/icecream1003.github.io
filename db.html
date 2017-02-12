@@ -19,6 +19,8 @@
         <input type="text" id="change_name">
         <p>年齡</p>
         <input type="text" id="change_age">
+        <p>班級</p>
+        <input type="text" id="change_room">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -35,6 +37,7 @@
       <tr>
         <td>姓名</td>
         <td>年齡</td>
+        <td>班級</td>
         <td></td>
         <td></td>
       </tr>
@@ -43,6 +46,7 @@
       <tr class="template">
         <td>name</td>
         <td>age</td>
+        <td>room</td>
         <td><a class="btn btn-default btn_detail" data-id="detail_id">Detail</a></td>
         <td><a class="btn btn-default btn_delete" data-id="delete_id">刪除</a></td>
         <td><a class="btn btn-default btn_change" data-id="change_id">修改</a></td>
@@ -54,6 +58,8 @@
     <input type="text" id="name"><br>
     age:<br>
     <input type="text" id="age"><br>
+    room:<br>
+    <input type="text" id="room"><br>
     <input type="button" value="送出" id="button">
   </form>
   年齡大於:<br>
@@ -74,7 +80,7 @@
       if(load_count >= 2){ 
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
-          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id);
+          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("_room",find.room);
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
       }
@@ -96,12 +102,13 @@
       }else if($("#age").val() == ""){
         alert("年齡欄要輸入");
       }else{
-        studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id))
-        var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id);
+        studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id,$("#room").val))
+        var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id).replace("room",$("#room").val());
         $("tbody").append("<tr>"+append_newthing+"</tr>")
         studentCollection.save();
         $("#name").val("");
         $("#age").val("");
+        $("#room").val("");
       }
     })
     $("body").on("click",".btn_delete",function(){
@@ -121,9 +128,10 @@
       $("#mymodal").modal("show");
       $("#change_name").val(change_save[0].name);
       $("#change_age").val(change_save[0].age);
+      $("#change_room").val(change_save[0].room);
     })
     $("#save_change").click(function(){
-      studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val()});
+      studentCollection.update({id:change_stuid}, {name:$("#change_name").val(),age:$("#change_age").val(),room:$("#change_room").val()});
       studentCollection.save();
       $("#mymodal").modal("hide");
       $("tbody tr:not(.template)").html("");
@@ -145,16 +153,17 @@
         
         $("tbody tr:not(.template)").html("");
         for(var i=0;i<save_age.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id);
+            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id).replace("room",save_age[i].id);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
       
     
-    function student(name, age, id){
+    function student(name, age, id, room){
       this.name = name;
       this.age = age;
       this.id = id;
+      this.class = room;
     }
     
     function score(id, subject, score){
@@ -164,8 +173,8 @@
     }
     
     function save_student(){
-      studentCollection.insert(new student("Fiona", 12, 0));
-      studentCollection.insert(new student("Jack", 13, 1));
+      studentCollection.insert(new student("Fiona", 12, 0, 1));
+      studentCollection.insert(new student("Jack", 13, 1, 1));
       studentCollection.save();
       
       scoreCollection.insert(new score(0, "english", 90));
