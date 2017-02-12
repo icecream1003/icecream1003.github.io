@@ -159,11 +159,11 @@
         if(gte_val==0 && lte_val==0){
             var save_object = studentCollection.find({room:{$in:active_rooms}});
         }else if(lte_val==0){
-            var save_object = studentCollection.find({age:{$gte:gte_val}},{room:{$in:active_rooms}});
+            var save_object = studentCollection.find({age:{$gte:gte_val},room:{$in:active_rooms}});
         }else if(gte_val==0){
-             var save_object = studentCollection.find({age:{$lte:lte_val}},{room:{$in:active_rooms}}); 
+             var save_object = studentCollection.find({age:{$lte:lte_val},room:{$in:active_rooms}}); 
         }else{
-            var save_object = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}},{room:{$in:active_rooms}});
+            var save_object = studentCollection.find({age:{$gte:gte_val,$lte:lte_val},room:{$in:active_rooms}});
         }
         
         $("tbody tr:not(.template)").html("");
