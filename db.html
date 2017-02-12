@@ -162,7 +162,7 @@
         
         $("tbody tr:not(.template)").html("");
         for(var i=0;i<save_age.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id).replace("room",save_age[i].id);
+            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id).replace("room",save_age[i].room);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
 
@@ -180,7 +180,7 @@
         }
         $("tbody tr:not(.template)").html("");
         for(var i=0;i<save_rooms.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_rooms[i].name).replace("age",save_rooms[i].age).replace("detail.id",save_rooms[i].id).replace("delete_id",save_rooms[i].id).replace("change_id",save_rooms[i].id).replace("room",save_rooms[i].id);
+            var append_newthing = $(".template").html().replace("name",save_rooms[i].name).replace("age",save_rooms[i].age).replace("detail.id",save_rooms[i].id).replace("delete_id",save_rooms[i].id).replace("change_id",save_rooms[i].id).replace("room",save_rooms[i].room);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
