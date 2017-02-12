@@ -168,12 +168,11 @@
 
         var rooms_html = $(".choose_room");
         var active_rooms = [];
-        for(var i=0; i<rooms_html; i++){
+        for(var i=0; i<rooms_html.length; i++){
           if($(rooms_html[i]).prop("checked") == true){
             active_rooms.push($(rooms_html[i]).val());
           }
         }
-        console.log(active_rooms);
         if(active_rooms.length == 0){
           var save_rooms = studentCollection.find();
         }else{
