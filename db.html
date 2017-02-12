@@ -72,9 +72,9 @@
   年齡小於:<br>
   <input type="text" id="age_lte"><br>
   班級:<br>
-  <input type="checkbox" value="1" class="choose_room">1
-  <input type="checkbox" value="2" class="choose_room">2
-  <input type="checkbox" value="3" class="choose_room">3
+  <input type="checkbox" value="1" class="choose_room">1 <br>
+  <input type="checkbox" value="2" class="choose_room">2 <br>
+  <input type="checkbox" value="3" class="choose_room">3 <br>
   <input type="button" value="搜尋" id="search">
   <script>
     var fdb = new ForerunnerDB();
@@ -163,6 +163,24 @@
         $("tbody tr:not(.template)").html("");
         for(var i=0;i<save_age.length;i++){
             var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id).replace("room",save_age[i].id);
+            $("tbody").append("<tr>"+append_newthing+"</tr>");
+        }
+
+        var rooms_html = $(".choose_room");
+        var active_rooms = [];
+        for(var i=0; i<rooms_html; i++){
+          if($(rooms_html[i]).prop("checked") == true){
+            active_rooms.push($(rooms_html[i]).val());
+          }
+        }
+        if(active_rooms.length == 0){
+          var save_rooms = studentCollection.find();
+        }else{
+          var save_rooms = studentCollection.find({room:{$in:active_rooms}});
+        }
+        $("tbody tr:not(.template)").html("");
+        for(var i=0;i<save_rooms.length;i++){
+            var append_newthing = $(".template").html().replace("name",save_rooms[i].name).replace("age",save_rooms[i].age).replace("detail.id",save_rooms[i].id).replace("delete_id",save_rooms[i].id).replace("change_id",save_rooms[i].id).replace("room",save_rooms[i].id);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
