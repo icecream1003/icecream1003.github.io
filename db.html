@@ -80,7 +80,7 @@
       if(load_count >= 2){ 
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
-          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("_room",find.room);
+          var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("room",find.room);
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
       }
