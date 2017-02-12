@@ -59,7 +59,13 @@
     age:<br>
     <input type="text" id="age"><br>
     room:<br>
-    <input type="text" id="room"><br>
+    <select name="" id="">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    
+    <br>
     <input type="button" value="送出" id="button">
   </form>
   年齡大於:<br>
@@ -102,8 +108,8 @@
       }else if($("#age").val() == ""){
         alert("年齡欄要輸入");
       }else{
-        studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id,$("#room").val))
-        var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id).replace("room",$("#room").val());
+        studentCollection.insert(new student($('#name').val(),$("#age").val(),new_id,$("select").val()))
+        var append_newthing = $(".template").html().replace("name",$('#name').val()).replace("age",$("#age").val()).replace("detail.id",new_id).replace("delete_id",new_id).replace("change_id",new_id).replace("room",$("select").val());
         $("tbody").append("<tr>"+append_newthing+"</tr>")
         studentCollection.save();
         $("#name").val("");
