@@ -149,23 +149,6 @@
     $("#search").click(function(){
         var lte_val = $("#age_lte").val()/1;
         var gte_val = $("#age_gte").val()/1;
-        
-        if(gte_val==0 && lte_val==0){
-            var save_age = studentCollection.find();
-        }else if(lte_val==0){
-            var save_age = studentCollection.find({age:{$gte:gte_val}});
-        }else if(gte_val==0){
-             var save_age = studentCollection.find({age:{$lte:lte_val}}); 
-        }else{
-            var save_age = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}});
-        }
-        
-        $("tbody tr:not(.template)").html("");
-        for(var i=0;i<save_age.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_age[i].name).replace("age",save_age[i].age).replace("detail.id",save_age[i].id).replace("delete_id",save_age[i].id).replace("change_id",save_age[i].id).replace("room",save_age[i].room);
-            $("tbody").append("<tr>"+append_newthing+"</tr>");
-        }
-
         var rooms_html = $(".choose_room");
         var active_rooms = [];
         for(var i=0; i<rooms_html.length; i++){
@@ -173,19 +156,24 @@
             active_rooms.push($(rooms_html[i]).val());
           }
         }
-        if(active_rooms.length == 0){
-          var save_rooms = studentCollection.find();
+        if(gte_val==0 && lte_val==0 && active_rooms.length == 0){
+            var save_object = studentCollection.find();
+        }else if(gte_val==0 && lte_val==0){
+            var save_object = studentCollection.find({room:{$in:active_rooms}});
+        }else if(lte_val==0){
+            var save_object = studentCollection.find({age:{$gte:gte_val}},{room:{$in:active_rooms}});
+        }else if(gte_val==0){
+             var save_object = studentCollection.find({age:{$lte:lte_val}},{room:{$in:active_rooms}}); 
         }else{
-          var save_rooms = studentCollection.find({room:{$in:active_rooms}});
+            var save_object = studentCollection.find({age:{$gte:gte_val,$lte:lte_val}},{room:{$in:active_rooms}});
         }
+        
         $("tbody tr:not(.template)").html("");
-        for(var i=0;i<save_rooms.length;i++){
-            var append_newthing = $(".template").html().replace("name",save_rooms[i].name).replace("age",save_rooms[i].age).replace("detail.id",save_rooms[i].id).replace("delete_id",save_rooms[i].id).replace("change_id",save_rooms[i].id).replace("room",save_rooms[i].room);
+        for(var i=0;i<save_object.length;i++){
+            var append_newthing = $(".template").html().replace("name",save_object[i].name).replace("age",save_object[i].age).replace("detail.id",save_object[i].id).replace("delete_id",save_object[i].id).replace("change_id",save_object[i].id).replace("room",save_object[i].room);
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
-      
-    
     function student(name, age, id, room){
       this.name = name;
       this.age = age;
