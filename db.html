@@ -156,6 +156,9 @@
             active_rooms.push($(rooms_html[i]).val());
           }
         }
+        if(active_rooms.length == 0){
+          active_rooms.push()
+        }
         if(gte_val==0 && lte_val==0){
             var save_object = studentCollection.find({room:{$in:active_rooms}});
         }else if(lte_val==0){
