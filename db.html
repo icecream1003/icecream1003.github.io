@@ -183,12 +183,14 @@
       this.room = room;
     }
     
-    function teacher(name){
+    function teacher(name, phone){
       this.name = name;
+      this.phone = phone;
     }
     
-    function parents(name){
+    function parents(name, phone){
       this.name = name;
+      this.phone = phone;
     }
     
     function score(id, subject, score){
@@ -209,6 +211,19 @@
       scoreCollection.insert(new score(1, "chinese", 60));
       scoreCollection.insert(new score(1, "math", 70));
       scoreCollection.save();
+    }
+
+    function save_teacher(){
+      teacherCollection.insert(new teacher("merry", "0912345678"));
+      teacherCollection.insert(new teacher("hello", "0923456789"));
+      teacherCollection.save();
+    }
+    function save_parents(){
+      parentsCollection.insert(new parents("tree", "0912355678"));
+      parentsCollection.insert(new parents("fire", "0923456780"));
+      parentsCollection.insert(new parents("water", "0913355678"));
+      parentsCollection.insert(new parents("rock", "0923456980"));
+      parentsCollection.save();
     }
         
     var load_count = 0;
