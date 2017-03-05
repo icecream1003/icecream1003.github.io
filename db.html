@@ -88,7 +88,7 @@
     
     function after_load(){
       load_count = load_count + 1;
-      if(load_count >= 2){ 
+      if(load_count >= 4){ 
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("room",find.room);
@@ -214,6 +214,8 @@
     var load_count = 0;
     studentCollection.load(after_load);
     scoreCollection.load(after_load);
+    teacherCollection.load(after_load);
+    parentsCollection.load(after_load);
   </script>
 </body>
 </html>
