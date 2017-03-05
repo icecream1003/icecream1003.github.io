@@ -79,6 +79,8 @@
   <select id="parent-id">
     <option value="number">請選擇家長</option>
   </select>
+  <select id="save-parents">
+  </select>
   <script>
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
@@ -98,10 +100,10 @@
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
         for(var i=0;i<parentsCollection.find().length;i++){
-          var find = parentsCollection.find()[parentsCollection.find().length-1];
+          var find = parentsCollection.find()[i];
           var append_thing = $("#parent-id").html().replace("請選擇家長",find.name).replace("number",find.id);
           console.log(append_thing);
-          $("select").append(append_thing);
+          $("save-parents").append(append_thing);
         }
       }
 
