@@ -42,7 +42,7 @@
         <td></td>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="student_tbody">
       <tr class="template">
         <td>name</td>
         <td>age</td>
@@ -75,10 +75,25 @@
   <input type="checkbox" value="1" class="choose_room">1 <br>
   <input type="checkbox" value="2" class="choose_room">2 <br>
   <input type="checkbox" value="3" class="choose_room">3 <br>
-  <input type="button" value="搜尋" id="search">
+  <input type="button" value="搜尋" id="search"><br>
   <select id="parent-id">
     <option value="number">請選擇家長</option>
   </select>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>姓名</td>
+        <td>手機號碼</td>
+      </tr>
+    </thead>
+    <tbody class="parents_tbody">
+      <tr class="parents_template">
+        <td>name</td>
+        <td>phone</td>
+      </tr>
+    </tbody>
+  </table>
   <script>
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
@@ -95,10 +110,15 @@
         for(var i=0;i<studentCollection.find().length;i++){
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("room",find.room);
-          $("tbody").append("<tr>"+append_thing+"</tr>");
+          $(".student_tbody").append("<tr>"+append_thing+"</tr>");
         }
         for(var i=0;i<parentsCollection.find().length;i++){
           $("#parent-id").append('<option value="'+i+'">'+parentsCollection.find()[i].name+"</option>");
+        }
+        for(var i=0;i<parentsCollection.find().length;i++){
+          var find = parentsCollection.find()[i];
+          var append_thing = $(".parents_template").html().replace("name",find.name).replace("phone",find.phone);
+          $(".parents_tbody").append("<tr>"+append_thing+"</tr>");
         }
       }
     }
