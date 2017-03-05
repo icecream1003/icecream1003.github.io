@@ -76,6 +76,9 @@
   <input type="checkbox" value="2" class="choose_room">2 <br>
   <input type="checkbox" value="3" class="choose_room">3 <br>
   <input type="button" value="搜尋" id="search">
+  <select id="parent-id">
+    <option value="number">請選擇家長</option>
+  </select>
   <script>
     var fdb = new ForerunnerDB();
     var db = fdb.db("db");
@@ -93,6 +96,11 @@
           var find = studentCollection.find()[i];
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("room",find.room);
           $("tbody").append("<tr>"+append_thing+"</tr>");
+        }
+        for(var i=0;i<parentsCollection.find().length;i++){
+          var find = parentsCollection.find()[i];
+          var append_thing = $("#parent-id").html().replace("請選擇家長",find.name).replace("number",find.id);
+          $("select").append(append_thing);
         }
       }
     }
@@ -176,6 +184,7 @@
             $("tbody").append("<tr>"+append_newthing+"</tr>");
         }
     })
+
     function student(name, age, id, room){
       this.name = name;
       this.age = age;
@@ -183,14 +192,16 @@
       this.room = room;
     }
     
-    function teacher(name, phone){
+    function teacher(name, phone, id){
       this.name = name;
       this.phone = phone;
+      this.id = id;
     }
     
-    function parents(name, phone){
+    function parents(name, phone, id){
       this.name = name;
       this.phone = phone;
+      this.id = id;
     }
     
     function score(id, subject, score){
@@ -214,17 +225,17 @@
     }
 
     function save_teacher(){
-      teacherCollection.insert(new teacher("merry", "0912345678"));
-      teacherCollection.insert(new teacher("hello", "0923456789"));
-      teacherCollection.insert(new teacher("hi", "0937472974"));
-      teacherCollection.insert(new teacher("bye", "0923333789"));
+      teacherCollection.insert(new teacher("merry", "0912345678", 1));
+      teacherCollection.insert(new teacher("hello", "0923456789", 2));
+      teacherCollection.insert(new teacher("hi", "0937472974", 3));
+      teacherCollection.insert(new teacher("bye", "0923333789", 4));
       teacherCollection.save();
     }
     function save_parents(){
-      parentsCollection.insert(new parents("tree", "0912355678"));
-      parentsCollection.insert(new parents("fire", "0923456780"));
-      parentsCollection.insert(new parents("water", "0913355678"));
-      parentsCollection.insert(new parents("rock", "0923456980"));
+      parentsCollection.insert(new parents("tree", "0912355678", 1));
+      parentsCollection.insert(new parents("fire", "0923456780", 2));
+      parentsCollection.insert(new parents("water", "0913355678", 3));
+      parentsCollection.insert(new parents("rock", "0923456980", 4));
       parentsCollection.save();
     }
         
