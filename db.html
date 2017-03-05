@@ -97,12 +97,12 @@
           var append_thing = $(".template").html().replace("name",find.name).replace("age",find.age).replace("detail.id",find.id).replace("delete_id",find.id).replace("change_id",find.id).replace("room",find.room);
           $("tbody").append("<tr>"+append_thing+"</tr>");
         }
-//         for(var i=0;i<parentsCollection.find().length;i++){
+        for(var i=0;i<parentsCollection.find().length;i++){
           var find = parentsCollection.find()[parentsCollection.find().length-1];
           var append_thing = $("#parent-id").html().replace("請選擇家長",find.name).replace("number",find.id);
           console.log(append_thing);
           $("select").append(append_thing);
-//         }
+        }
       }
 
     }
